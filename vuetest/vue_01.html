@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js测试程序</title>
+    <script src="vue.min.js"></script>
+</head>
+
+<!--
+    1.vue.js入门程序
+     1）编写html,引入vue.min.js
+     2）编写视图部分的代码（用户界面，只负责展示）
+     3）编写VM及其中Model
+     4）刷新页面程序，vue.js部分实现将Model中的数据在view中展示
+-->
+
+<body>
+<!--在body区域显示一个name-->
+<div id="app">
+    {{name}}<!--相当于MVVM中的view视图-->
+</div>
+</body>
+
+<script>
+    //编写MMVM中的model部分及VM（ViewModel）部分
+    var VM = new Vue({
+        el:'#app',//接管了app区域的管理
+        data:{
+            name:'测试MVVM'//model数据
+        }
+    });
+</script>
+
+</html>

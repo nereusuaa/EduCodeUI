@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v‐on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js常用指令的测试</title>
+
+</head>
+<!--v-if和v-for-->
+
+<body>
+<!--在body区域显示一个name-->
+<div id="app">
+    <!--相当于MVVM中的view视图-->
+    <ul>
+        <li v-for="(item,index) in list" :key="index" v-if="index % 2 ==0">{{index}}--{{item}} </li>
+        <li v-for="(value,key) in user" >{{key}}--{{user}}</li>
+        <li v-for="(item,index) in userlist" :key="item.user.uname" >
+            <div v-if="item.user.uname == '张三'" style="background: #00a0e9">
+                {{index}}--{{item.user.uname}}--{{item.user.age}}
+            </div>
+            <div v-else="">
+                {{index}}--{{item.user.uname}}--{{item.user.age}}
+            </div>
+        </li>
+
+    </ul>
+</div>
+</body>
+
+<script src="vue.min.js"></script>
+<script>
+    //编写MMVM中的model部分及VM（ViewModel）部分
+    var VM = new Vue({
+        el:'#app',//接管了app区域的管理
+        data:{
+           list:[1,2,3,4,5],
+           user:{ uname:'张三',age:10},
+           userlist:[
+               { user:{uname:'张三',age:10}},
+               { user:{uname:'李四',age:12}}
+
+           ]
+
+
+        }
+
+    });
+</script>
+
+</html>

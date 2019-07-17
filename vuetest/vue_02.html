@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v‐on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js常用指令的测试</title>
+
+</head>
+<!--
+    vue.js常用指令
+      1）v-model实现双向数据绑定：
+          a、由模型数据绑定到Dom对象，模型数据的值改变，Dom对象的值自动改变
+          b、由Dom对象绑定到模型数据，Dom对象的值改变，模型数据就改变
+         v-model仅能在input、select、textarea、components中使用
+
+      2) v-text可以将一个变量的值渲染到指定的元素中，他可以解决插值表达式闪烁，文本输入都使用v-text
+
+      3) v-on
+            监听用户事件
+
+      4)v‐bind可以将数据对象绑定在dom的任意属性中。可将v-bind省略不写
+-->
+
+<body>
+<!--在body区域显示一个name-->
+<div id="app">
+    <!--相当于MVVM中的view视图-->
+<!--    {{name}}-->
+<!--    <a v-bind:href="url"></a>--><!--    不缩写v-bind-->
+    <a :href="url">
+        <span v-text="name"></span>
+    </a>
+    <input type="text" v-model="num1"/> +
+    <input type="text" v-model="num2"/> =
+<!--    <span v-text="Number.parseInt(num1) + Number.parseInt(num2)"></span>-->
+<!--    {{ Number.parseInt(num1) + Number.parseInt(num2) }}-->
+    <span v-text="result"></span>
+    <button v-on:click="change">计算</button>
+</div>
+</body>
+
+<script src="vue.min.js"></script>
+<script>
+    //编写MMVM中的model部分及VM（ViewModel）部分
+    var VM = new Vue({
+        el:'#app',//接管了app区域的管理
+        data:{
+            name:'指令测试',//model数据
+            num1:0,
+            num2:0,
+            result:0,
+            url:'http://www.baidu.com'
+        },
+        methods:{
+          change:function () {
+              this.result = Number.parseInt(this.num1) + Number.parseInt(this.num2)
+              // alert("计算结果："+ this.result )
+          }
+        }
+    });
+</script>
+
+</html>
